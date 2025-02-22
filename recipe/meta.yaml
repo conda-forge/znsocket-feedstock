@@ -1,5 +1,5 @@
 {% set name = "znsocket" %}
-{% set version = "0.2.7" %}
+{% set version = "0.2.8" %}
 {% set python_min = "3.10" %}
 
 package:
@@ -8,7 +8,7 @@ package:
 
 source:
   url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/znsocket-{{ version }}.tar.gz
-  sha256: 1e5f8225af2ccaa82334064f2054142e68caa4980a64f9d2711761677d8d323e
+  sha256: e2190928775414fdd426dc342c1cc2464eb449e6a669b256c54876c94ea1163b
 
 build:
   entry_points:
@@ -20,15 +20,15 @@ build:
 requirements:
   host:
     - python {{ python_min }}
-    - poetry-core
+    - hatchling
     - pip
   run:
     - python >={{ python_min }},<4.0.0
-    - python-socketio >=5.11.0,<6.0.0
-    - eventlet >=0.0.0,<1.0.0
-    - typer >=0.0.0,<1.0.0
-    - znjson >=0.2.3,<0.3.0
-    - redis-py >=5.0.0,<6.0.0
+    - python-socketio >=5.12.1
+    - eventlet >=0.39.0
+    - typer >=0.13
+    - znjson >=0.2.6
+    - redis-py >=5.2.1
 
 test:
   imports:
