@@ -1,5 +1,5 @@
 {% set name = "znsocket" %}
-{% set version = "0.2.10" %}
+{% set version = "0.2.11" %}
 {% set python_min = "3.10" %}
 
 package:
@@ -8,7 +8,7 @@ package:
 
 source:
   url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/znsocket-{{ version }}.tar.gz
-  sha256: 0004099d543ab757922f9083cbbc8336519581d61d7038c14a9722dbc6089b53
+  sha256: fddee32356fa690a130eaca3223f12ecef28f5264c6786ac48e6a6958aa024d8
 
 build:
   entry_points:
