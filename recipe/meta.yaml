@@ -1,5 +1,5 @@
 {% set name = "znsocket" %}
-{% set version = "0.2.12" %}
+{% set version = "0.3.0" %}
 {% set python_min = "3.10" %}
 
 package:
@@ -8,7 +8,7 @@ package:
 
 source:
   url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/znsocket-{{ version }}.tar.gz
-  sha256: 14cd0813d19586d816e7d2e67ccf3b57f0fc99e6b1c04d89f810ef796734eedf
+  sha256: 5a0315d943eff4b58dc9e464c0c6a5790a686cc64e2a627513f749eeb9cd99af
 
 build:
   entry_points:
@@ -23,6 +23,7 @@ requirements:
     - hatchling
     - pip
   run:
+    - sortedcontainers >=2.4.0
     - python >={{ python_min }},<4.0.0
     - python-socketio >=5.12.1
     - eventlet >=0.39.0
