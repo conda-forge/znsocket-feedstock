@@ -1,0 +1,58 @@
+schema_version: 1
+
+context:
+  name: znsocket
+  version: "0.3.0"
+
+package:
+  name: ${{ name|lower }}
+  version: ${{ version }}
+
+source:
+  url: https://pypi.org/packages/source/${{ name[0] }}/${{ name }}/znsocket-${{ version }}.tar.gz
+  sha256: 5a0315d943eff4b58dc9e464c0c6a5790a686cc64e2a627513f749eeb9cd99af
+
+build:
+  number: 1
+  noarch: python
+  script: ${{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
+  python:
+    entry_points:
+      - znsocket = znsocket.cli:app
+
+requirements:
+  host:
+    - python ${{ python_min }}.*
+    - hatchling
+    - pip
+  run:
+    - sortedcontainers >=2.4.0
+    - python >=${{ python_min }},<4.0.0
+    - python-socketio >=5.12.1
+    - eventlet >=0.39.0
+    - typer >=0.13
+    - znjson >=0.2.6
+    - redis-py >=5.2.1
+
+tests:
+  - python:
+      imports:
+        - znsocket
+      pip_check: true
+      python_version: ${{ python_min }}
+  - requirements:
+      run:
+        - pip
+        - python ${{ python_min }}.*
+    script:
+      - znsocket --help
+
+about:
+  summary: Python implementation of a Redis-compatible API using websockets.
+  license: Apache-2.0
+  license_file: LICENSE
+  homepage: https://github.com/zincware/ZnSocket
+
+extra:
+  recipe-maintainers:
+    - jan-janssen
